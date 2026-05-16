@@ -2,13 +2,13 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Code2,Database,RefreshCw,Braces,Clock,Search, FileJson, ShieldAlert, Binary, ArrowRight, Zap, ShieldCheck, Sparkles } from 'lucide-react';
+import {Fingerprint,ScanSearch, Code2,Database,RefreshCw,Braces,Clock,Search, FileJson, ShieldAlert, Binary, ArrowRight, Zap, ShieldCheck, Sparkles } from 'lucide-react';
 
 interface ToolItem {
   name: string;
   slug: string;
   description: string;
-  category: 'Data Conversions' | 'Security & Auth' | 'Encoding utilities';
+  category: 'Data Conversions' | 'Security & Auth' | 'Encoding utilities'|'Developer Utilities';
   icon: React.ReactNode;
   tags: string[];
 }
@@ -30,6 +30,14 @@ const TOOL_DIRECTORY: ToolItem[] = [
     icon: <ShieldAlert className="w-5 h-5 text-amber-400" />,
     tags: ["jwt", "token", "decode", "auth"]
   },
+  {
+  name: "UUID Generator",
+  slug: "/tools/uuid",
+  description: "Generate RFC 4122 compliant UUIDs instantly. Supports v1, v4, and v5 with bulk export, format options, and code snippets for 9 languages.",
+  category: "Developer Utilities",
+  icon: <Fingerprint className="w-5 h-5 text-cyan-400" />,
+  tags: ["uuid", "guid", "unique", "id", "generator", "v4", "random", "identifier"]
+},
   {
     name: "Base64 Encoder & Decoder",
     slug: "/tools/base64",
@@ -80,6 +88,13 @@ const TOOL_DIRECTORY: ToolItem[] = [
   category: "Encoding utilities",
   icon: <Code2 className="w-5 h-5 text-sky-400" />,
   tags: ["json", "ts", "typescript", "interface", "type"]
+},{
+  name: "Regex Tester & Debugger",
+  slug: "/tools/regex",
+  description: "Test, debug, and validate regular expressions live with match highlighting, group extraction, and language-specific flag support.",
+  category: "Developer Utilities",
+  icon: <ScanSearch className="w-5 h-5 text-rose-400" />,
+  tags: ["regex", "regexp", "pattern", "tester", "javascript", "python", "java", "debugger"]
 }
 ];
 
@@ -147,7 +162,7 @@ export default function HomeDashboard() {
         ) : (
           <div className="space-y-12">
             {/* Categorized Slices dynamically mapping arrays */}
-            {['Data Conversions', 'Security & Auth', 'Encoding utilities'].map((cat) => {
+            {['Data Conversions', 'Security & Auth', 'Encoding utilities','Developer Utilities'].map((cat) => {
               const categoryItems = filteredTools.filter(i => i.category === cat);
               if (categoryItems.length === 0) return null;
 
